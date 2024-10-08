@@ -1,0 +1,55 @@
+app-id: com.larksuite.Lark
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+base: org.electronjs.Electron2.BaseApp
+base-version: '24.08'
+command: lark
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+  # For camera.
+  - --device=all
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.gnome.keyring
+  - --talk-name=org.gnome.ScreenSaver
+  # Share files.
+  # - --filesystem=home
+separate-locales: false
+
+modules:
+  - name: lark
+    buildsystem: simple
+    build-commands:
+      - install -D -m 755 -t /app/bin/ lark
+      - install -D -t /app/lib/ /usr/lib/x86_64-linux-gnu/{libbfd-*.so,libsframe.so.1}
+      - install -D -t /app/share/icons/hicolor/scalable/apps/ com.larksuite.Lark.svg
+      - install -D -t /app/share/applications/ com.larksuite.Lark.desktop
+      - install -D -t /app/share/metainfo/ com.larksuite.Lark.metainfo.xml
+      - mv ./bytedance/lark /app/lark
+      - sed -i '/^exec/d' /app/lark/bytedance-lark
+    sources:
+      - type: archive
+        url: https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/355bee5d/Lark-linux_x64-7.22.9.rpm
+        sha256: 3ccafc1b5dca09628e4344d7875bdf16c5e8f6aee8d6e6f9f5395aeb0cb0cd86
+        only-arches:
+          - x86_64
+      - type: archive
+        url: https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/d4c69d14/Lark-linux_arm64-7.22.9.rpm
+        sha256: 3b2d4207471ed92b513b56c381d2938117a6fd7555bdf00a5028874ca6328909
+        only-arches:
+          - aarch64
+      - type: script
+        commands:
+          - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - source /app/lark/bytedance-lark
+          - exec zypak-wrapper /app/lark/lark "$@"
+        dest-filename: lark
+      - type: file
+        path: com.larksuite.Lark.desktop
+      - type: file
+        path: com.larksuite.Lark.metainfo.xml
+      - type: file
+        path: com.larksuite.Lark.svg

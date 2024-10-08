@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.larksuite.Lark</id>
+  <update_contact>hello@larksuite.com</update_contact>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Lark</name>
+  <summary>Lark is a next-generation office suite that integrates messaging, schedule management, collaborative documents, video meeting, and various apps in one platform.</summary>
+  <description>
+    <p>
+      Make team communication effortless with the Lark all-in-one collaboration tool. No more wasting time toggling between multiple programs and documents. With Lark you have everything you need in one spot, helping your team be successful no matter where they're located.
+
+      Lark is the perfect solution for global teams or businesses that are looking to centralize all of their tools into one platform. Globally distributed teams can use Lark's productivity app to communicate across languages and time zones.
+    </p>
+  </description>
+  <url type="homepage">https://www.larksuite.com/</url>
+  <developer_name>Lark Linux Team</developer_name>
+  <releases>
+    <release version="7.22.9" date="2024-08-14">
+      <description></description>
+    </release>
+  </releases>
+  <launchable type="desktop-id">com.larksuite.Lark.desktop</launchable>
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">intense</content_attribute>
+    <content_attribute id="social-info">mild</content_attribute>
+    <content_attribute id="social-audio">intense</content_attribute>
+    <content_attribute id="social-location">intense</content_attribute>
+    <content_attribute id="social-contacts">intense</content_attribute>
+    <content_attribute id="money-purchasing">intense</content_attribute>
+  </content_rating>
+  <project_license>LicenseRef-proprietary=https://www.larksuite.com/user-terms-of-service</project_license>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://framerusercontent.com/images/KMMo8Z2e2Ybe6bv9ufxePWk3l4g.png</image>
+      <caption>Lark suite</caption>
+    </screenshot>
+  </screenshots>
+</component>
