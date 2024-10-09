@@ -1,0 +1,26 @@
+on:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+  workflow_call:
+
+name: build
+jobs:
+  flatpak:
+    name: build flatpak
+    runs-on: self-hosted
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:freedesktop-24.08
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v4
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: lark.flatpak
+        manifest-path: com.larksuite.Lark.yaml
+        cache-key: flatpak-builder-${{ github.sha }}
+    - name: upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: lark.flatpak
+        path: lark.flatpak
