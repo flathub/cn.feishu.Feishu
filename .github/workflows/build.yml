@@ -24,3 +24,17 @@ jobs:
           arch: ${{ matrix.arch }}
           cache-key: flatpak-builder-${{ github.ref_name }}
           upload-artifact: true
+
+
+  build2:
+    strategy:
+      matrix:
+        arch: [x86_64, aarch64] 
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - name: download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: lark-${{ matrix.arch }}
+        path: lark-${{ matrix.arch }}.flatpak
