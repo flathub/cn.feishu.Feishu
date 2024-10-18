@@ -14,7 +14,8 @@ jobs:
       options: --privileged
     strategy:
       matrix:
-        arch: [x86_64, aarch64]
+        # arch: [x86_64, aarch64]
+        arch: [x86_64]
     steps:
       - uses: actions/checkout@v4
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
@@ -28,12 +29,13 @@ jobs:
   build2:
     strategy:
       matrix:
-        arch: [x86_64, aarch64] 
+        # arch: [x86_64, aarch64]
+        arch: [x86_64]
     needs: flatpak
     runs-on: self-hosted
     steps:
     - name: download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: lark-${{ matrix.arch }}
+        name: lark-${{ matrix.arch }}-${{ matrix.arch }}
         path: lark-${{ matrix.arch }}.flatpak
