@@ -19,8 +19,7 @@ jobs:
     - name: download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: lark-${{ matrix.arch }}
-        path: lark-${{ matrix.arch }}.flatpak
+        name: lark-${{ matrix.arch }}.flatpak
     - uses: ncipollo/release-action@v1
       with:
         artifacts: lark-${{ matrix.arch }}.flatpak
