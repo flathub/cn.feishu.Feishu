@@ -22,7 +22,6 @@ jobs:
           bundle: lark.flatpak
           manifest-path: com.larksuite.Lark.yaml
           arch: ${{ matrix.arch }}
-          cache-key: flatpak-builder-${{ github.ref_name }}
           upload-artifact: true
 
 
