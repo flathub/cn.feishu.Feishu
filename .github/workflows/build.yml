@@ -23,8 +23,11 @@ jobs:
           bundle: lark.flatpak
           manifest-path: com.larksuite.Lark.yaml
           arch: ${{ matrix.arch }}
-          upload-artifact: true
-
+          upload-artifact: false
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lark-${{ matrix.arch }}.flatpak
+          path: lark.flatpak
 
   build2:
     strategy:
@@ -37,5 +40,4 @@ jobs:
     - name: download artifacts
       uses: actions/download-artifact@v4
       with:
-        name: lark-${{ matrix.arch }}
-        path: lark-${{ matrix.arch }}.flatpak
+        name: lark-${{ matrix.arch }}.flatpak
