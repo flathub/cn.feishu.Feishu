@@ -48,9 +48,9 @@ modules:
         dest-filename: apply_extra
       - type: extra-data
         filename: Feishu-linux.deb
-        url: https://sf3-cn.feishucdn.com/obj/ee-appcenter/9bcfe8ba/Feishu-linux_x64-7.36.11.deb
-        sha256: 8aa11cc1f17acf68c9d13985cc3bb681fe9e6a91dc24f68b49511282d0bd5948
-        size: 388475888
+        url: https://sf3-cn.feishucdn.com/obj/ee-appcenter/91e64286/Feishu-linux_x64-7.42.17.deb
+        sha256: 46cabec500328bb23559c9e45f384f1206d4c9f5d4f573d5288bafe99f47e550
+        size: 399956976
         x-checker-data:
           type: json
           url: https://www.feishu.cn/api/downloads
