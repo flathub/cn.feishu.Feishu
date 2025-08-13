@@ -18,6 +18,9 @@
   <url type="homepage">https://feishu.cn/</url>
   <developer_name>Feishu Linux Team</developer_name>
   <releases>
+    <release version="7.46.11" date="2025-07-25">
+      <description></description>
+    </release>
     <release version="7.36.11" date="2025-03-07">
       <description></description>
     </release>
