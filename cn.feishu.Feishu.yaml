@@ -1,9 +1,9 @@
 app-id: cn.feishu.Feishu
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '23.08'
+base-version: '24.08'
 command: feishu
 finish-args:
   - --share=network
@@ -12,6 +12,7 @@ finish-args:
   - --socket=pulseaudio
   # For camera.
   - --device=all
+  - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.gnome.keyring
   - --talk-name=org.gnome.ScreenSaver
@@ -24,7 +25,7 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D -m 755 -t /app/bin/ apply_extra feishu
-      - install -D -t /app/lib/ /usr/lib/x86_64-linux-gnu/{libbfd-*.so,libsframe.so.1}
+      - install -D -t /app/lib/ /usr/lib/x86_64-linux-gnu/{libbfd-*.so,libsframe.so.2}
       - install -D -t /app/bin/ /usr/bin/ar
       - install -D -t /app/share/icons/hicolor/scalable/apps/ cn.feishu.Feishu.svg
       - install -D -t /app/share/applications/ cn.feishu.Feishu.desktop
@@ -48,9 +49,9 @@ modules:
         dest-filename: apply_extra
       - type: extra-data
         filename: Feishu-linux.deb
-        url: https://sf3-cn.feishucdn.com/obj/ee-appcenter/9bcfe8ba/Feishu-linux_x64-7.36.11.deb
-        sha256: 8aa11cc1f17acf68c9d13985cc3bb681fe9e6a91dc24f68b49511282d0bd5948
-        size: 388475888
+        url: https://lf3-ug-sign.feishucdn.com/ee-appcenter/1d078929/Feishu-linux_x64-7.50.13.deb?lk3s=fb957577&x-expires=1758673654&x-signature=Z8afLyHAN1MA9wzV6jw9VycSCKM%3D
+        sha256: c0fdd4cb3dca8962c00f35216673c9a2b8b682a773126e5acd4706bfcc350573
+        size: 436749748
         x-checker-data:
           type: json
           url: https://www.feishu.cn/api/downloads
