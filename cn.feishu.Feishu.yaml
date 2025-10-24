@@ -29,8 +29,6 @@ modules:
       - install -D -t /app/share/icons/hicolor/scalable/apps/ cn.feishu.Feishu.svg
       - install -D -t /app/share/applications/ cn.feishu.Feishu.desktop
       - install -D -t /app/share/metainfo/ cn.feishu.Feishu.metainfo.xml
-    only-arches:
-      - x86_64
     sources:
       - type: script
         commands:
@@ -47,6 +45,7 @@ modules:
           - rm -rf opt usr *.tar.* debian-binary *.deb
         dest-filename: apply_extra
       - type: extra-data
+        only-arches: [x86_64]
         filename: Feishu-linux.deb
         url: https://sf3-cn.feishucdn.com/obj/ee-appcenter/e91d15e2/Feishu-linux_x64-7.50.14.deb
         sha256: 63095fdea8b8ab99d3de00bdaf8ca6b45608ae0f319b16a921f3b6a10a01742f
@@ -57,6 +56,18 @@ modules:
           version-query: .versions.Linux_deb_x64.version_number | capture("@V(?<v>.*)")
             | .v
           url-query: .versions.Linux_deb_x64.download_link
+      - type: extra-data
+        only-arches: [aarch64]
+        filename: Feishu-linux.deb
+        url: https://sf3-cn.feishucdn.com/obj/ee-appcenter/f247fca9/Feishu-linux_arm64-7.50.14.deb
+        sha256: 79ca5ac349fa8d1ab585d0d8deb4f346237c0a4dc14cbb7e2b50dcc6b3c8e131
+        size: 402823040
+        x-checker-data:
+          type: json
+          url: https://www.feishu.cn/api/downloads
+          version-query: .versions.Linux_deb_arm.version_number | capture("@V(?<v>.*)")
+            | .v
+          url-query: .versions.Linux_deb_arm.download_link
       - type: file
         path: cn.feishu.Feishu.desktop
       - type: file
