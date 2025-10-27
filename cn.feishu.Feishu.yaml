@@ -12,9 +12,7 @@ finish-args:
   - --socket=pulseaudio
   # For camera.
   - --device=all
-  - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.gnome.ScreenSaver
-  - --own-name=org.kde.StatusNotifierItem-2-1
   # Share files.
   - --filesystem=xdg-download
 separate-locales: false
@@ -24,8 +22,6 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D -m 755 -t /app/bin/ apply_extra feishu
-      - install -D -t /app/lib/ /usr/lib/x86_64-linux-gnu/{libbfd-*.so,libsframe.so.2}
-      - install -D -t /app/bin/ /usr/bin/ar
       - install -D -t /app/share/icons/hicolor/scalable/apps/ cn.feishu.Feishu.svg
       - install -D -t /app/share/applications/ cn.feishu.Feishu.desktop
       - install -D -t /app/share/metainfo/ cn.feishu.Feishu.metainfo.xml
@@ -38,11 +34,10 @@ modules:
         dest-filename: feishu
       - type: script
         commands:
-          - ar x Feishu-linux.deb
-          - tar -xf data.tar.xz
+          - bsdtar -O -xf Feishu-linux.deb data.* | bsdtar --no-same-owner -xf -
           - mv opt/bytedance/feishu .
           - sed '/^exec -a/d' feishu/bytedance-feishu > feishu/bytedance-feishu.sh
-          - rm -rf opt usr *.tar.* debian-binary *.deb
+          - rm -rf opt usr *.deb
         dest-filename: apply_extra
       - type: extra-data
         only-arches: [x86_64]
