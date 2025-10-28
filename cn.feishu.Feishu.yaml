@@ -13,6 +13,7 @@ finish-args:
   # For camera.
   - --device=all
   - --talk-name=org.gnome.ScreenSaver
+  - --talk-name=org.freedesktop.Notifications
   # Share files.
   - --filesystem=xdg-download
 separate-locales: false
