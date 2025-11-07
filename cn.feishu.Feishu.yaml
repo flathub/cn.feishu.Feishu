@@ -14,6 +14,8 @@ finish-args:
   - --device=all
   - --talk-name=org.gnome.ScreenSaver
   - --talk-name=org.freedesktop.Notifications
+  # Tray icon by KDE
+  - --own-name=org.kde.*
   # Share files.
   - --filesystem=xdg-download
 separate-locales: false
